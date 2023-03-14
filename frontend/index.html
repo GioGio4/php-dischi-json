@@ -39,8 +39,15 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
 <body>
     <div id="app">
 
-        <!-- Prova stampa array diskList -->
-        <p>{{diskList}}</p>
+        <div v-for="disk in diskList" :key="disk.title">
+            <img :src="disk.poster" alt="poster" />
+            <div class="disk-info">
+                <h2>{{ disk.title }}</h2>
+                <p>{{ disk.author }}</p>
+                <p>{{ disk.year }}</p>
+            </div>
+        </div>
+
 
     </div>
 

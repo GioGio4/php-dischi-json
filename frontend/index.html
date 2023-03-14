@@ -53,11 +53,20 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
     </header>
     <main>
 
+      <!-- Square  click  -->
+      <div class="square text-light text-center" :class="(diskClicked != null)?'active-square':''">
+        <div class="close-button" @click="closeSquare()">X</div>
+        <img :src="diskSelect.poster" alt="poster">
+        <h4>{{diskSelect.title}}</h4>
+        <p>{{diskSelect.author}}</p>
+        <p>{{diskSelect.year}}</p>
+      </div>
+
       <div class="container">
 
         <div class="row row-cols-3 mt-5 g-5">
 
-          <div v-for="disk in diskList" :key="disk.title" class="col">
+          <div v-for="(disk,index) in diskList" :key="disk.title" class="col" @click="onClick(index)">
             <!-- Card -->
             <div class="card px-5 py-3 mx-4 custom-card">
               <img :src="disk.poster" class="card-img-top" alt="poster">
@@ -66,9 +75,7 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
                 <p class="my-1">{{ disk.author }}</p>
                 <p class="my-1 fw-bold">{{ disk.year }}</p>
               </div>
-
             </div>
-
           </div>
 
         </div>

@@ -15,41 +15,68 @@ Al click su un disco, recuperare e mostrare i dati del disco selezionato.
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Dischi</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Dischi</title>
 
-    <!-- VUE JS -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+  <!-- VUE JS -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
 
-    <!-- AXIOS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
-        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-        </script>
+  <!-- AXIOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+    integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
 
-    <!-- MAIN JS -->
-    <script type="text/javascript" src="./main.js" defer></script>
+  <!-- MAIN JS -->
+  <script type="text/javascript" src="./main.js" defer></script>
 
-    <!-- Personal CSS -->
-    <link rel="stylesheet" href="./style.css">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div id="app">
+  <div id="app">
+    <header>
+      <nav class="navbar bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="icon" width="40" height="40">
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
 
-        <div v-for="disk in diskList" :key="disk.title">
-            <img :src="disk.poster" alt="poster" />
-            <div class="disk-info">
-                <h2>{{ disk.title }}</h2>
-                <p>{{ disk.author }}</p>
-                <p>{{ disk.year }}</p>
+      <div class="container">
+
+        <div class="row row-cols-3 mt-5 g-5">
+
+          <div v-for="disk in diskList" :key="disk.title" class="col">
+            <!-- Card -->
+            <div class="card px-5 py-3 mx-4 custom-card">
+              <img :src="disk.poster" class="card-img-top" alt="poster">
+              <div class="card-body p-0 text-light text-center">
+                <p class="my-1 fw-bold">{{ disk.title }}</p>
+                <p class="my-1">{{ disk.author }}</p>
+                <p class="my-1 fw-bold">{{ disk.year }}</p>
+              </div>
+
             </div>
+
+          </div>
+
         </div>
 
+      </div>
 
-    </div>
+    </main>
+  </div>
 
 </body>
 
